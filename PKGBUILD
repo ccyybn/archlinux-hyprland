@@ -5,7 +5,7 @@
 
 pkgname=hyprland
 pkgver=0.46.0
-pkgrel=1
+pkgrel=2
 pkgdesc='a highly customizable dynamic tiling Wayland compositor'
 arch=(x86_64 aarch64)
 url="https://github.com/hyprwm/${pkgname^}"
@@ -14,7 +14,7 @@ depends=(cairo # libcairo.so
          aquamarine libaquamarine.so
          gcc-libs # libgcc_s.so libstdc++.so
          glibc # libc.so libm.so
-         glib2 libgobject-2.0.so
+         glib2 libgio-2.0.so libgobject-2.0.so
          glslang
          hyprcursor libhyprcursor.so
          hyprgraphics libhyprgraphics.so
@@ -29,7 +29,7 @@ depends=(cairo # libcairo.so
          libx11
          libxcb # libxcb-dri3.so libxcb-present.so libxcb-render.so libxcb-res.so libxcb-shm.so libxcb.so libxcb-xfixes.so libxcb-xinput.so
          libxcomposite # libxcb-composite.so
-         libxcursor
+         libxcursor # libXcursor.so
          libxfixes
          libxkbcommon libxkbcommon.so
          libxrender
@@ -41,6 +41,7 @@ depends=(cairo # libcairo.so
          seatd libseat.so
          systemd-libs libsystemd.so
          tomlplusplus libtomlplusplus.so libudev.so
+         util-linux-libs libuuid.so
          vulkan-icd-loader
          wayland libwayland-client.so libwayland-server.so
          wayland-protocols
