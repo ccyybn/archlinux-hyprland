@@ -1,7 +1,7 @@
 pkgbase = hyprland
 	pkgdesc = a highly customizable dynamic tiling Wayland compositor
-	pkgver = 0.46.0
-	pkgrel = 2
+	pkgver = 0.46.1
+	pkgrel = 1
 	url = https://github.com/hyprwm/Hyprland
 	arch = x86_64
 	arch = aarch64
@@ -82,7 +82,7 @@ pkgbase = hyprland
 	optdepends = cpio: to build and install plugins using hyprpm
 	optdepends = meson: to build and install plugins using hyprpm
 	provides = wayland-compositor
-	source = Hyprland-0.46.0.tar.gz::https://github.com/hyprwm/Hyprland/releases/download/v0.46.0/source-v0.46.0.tar.gz
-	sha256sums = 5383f79b63d08062a44784eca45c96fd7da34e1d29743b2f71f7cdc557a9d1e6
+	source = Hyprland-0.46.1.tar.gz::https://github.com/hyprwm/Hyprland/releases/download/v0.46.1/source-v0.46.1.tar.gz
+	sha256sums = 8a37e3548e390a7d24e149f62232fc8a58b89eb14af1b188cc40f238e6673dc6
 
 pkgname = hyprland
