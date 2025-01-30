@@ -43,7 +43,6 @@ depends=(cairo # libcairo.so
          systemd-libs libsystemd.so
          tomlplusplus libtomlplusplus.so libudev.so
          util-linux-libs libuuid.so
-         vulkan-icd-loader
          wayland libwayland-client.so libwayland-server.so
          wayland-protocols
          xcb-proto
@@ -57,7 +56,6 @@ depends=(cairo # libcairo.so
 makedepends=(cmake
              meson
              ninja
-             vulkan-headers
              xorgproto)
 optdepends=('cmake: to build and install plugins using hyprpm'
             'cpio: to build and install plugins using hyprpm'
