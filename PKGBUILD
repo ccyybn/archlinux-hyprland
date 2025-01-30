@@ -5,7 +5,7 @@
 
 pkgname=hyprland
 pkgver=0.47.0
-pkgrel=5
+pkgrel=6
 pkgdesc='a highly customizable dynamic tiling Wayland compositor'
 arch=(x86_64 aarch64)
 url="https://github.com/hyprwm/${pkgname^}"
@@ -55,12 +55,14 @@ depends=(cairo # libcairo.so
          xorg-xwayland)
 makedepends=(cmake
              glaze
+             hyprland-protocols
              meson
              ninja
              xorgproto)
 optdepends=('cmake: to build and install plugins using hyprpm'
             'cpio: to build and install plugins using hyprpm'
             'glaze: to build and install plugins using hyprpm'
+            'hyprland-protocols: to build and install plugins using hyprpm'
             'meson: to build and install plugins using hyprpm')
 provides=(wayland-compositor)
 _archive="${pkgname^}-$pkgver"
@@ -85,8 +87,6 @@ package() {
 	cd "$_archive"
 	make DESTDIR="$pkgdir" install
 	rm -fv "$pkgdir/usr/include/hyprland/src/version.h.in"
-	# Maybe we should keep these?
-	rm -frv "$pkgdir/usr/include/hyprland/protocols"
 	# Drop this line when hyprland-portals.conf is removed from xdg-desktop-portal-hyprland
 	rm -frv "$pkgdir/usr/share/xdg-desktop-portal"
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
