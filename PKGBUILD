@@ -5,7 +5,7 @@
 
 pkgname=hyprland
 pkgver=0.55.0
-pkgrel=1
+pkgrel=2
 pkgdesc='a highly customizable dynamic tiling Wayland compositor'
 arch=(x86_64 aarch64)
 url="https://github.com/hyprwm/${pkgname^}"
@@ -16,7 +16,7 @@ depends=(cairo # libcairo.so
          'libstdc++' # libstdc++.so
          glibc # libc.so libm.so
          glib2 libgio-2.0.so libgobject-2.0.so
-         glslang
+         glslang # libglslang-default-resource-limits.so libglslang.so
          hyprcursor libhyprcursor.so
          hyprgraphics libhyprgraphics.so
          hyprland-guiutils
@@ -24,11 +24,10 @@ depends=(cairo # libcairo.so
          hyprutils libhyprutils.so
          hyprwayland-scanner
          hyprwire libhyprwire.so
-         libdisplay-info libdisplay-info.so
+         lcms2 liblcms2.so
          libdrm # libdrm.so
-         libglvnd libEGL.so libGLESv2.so libOpenGL.so
+         libglvnd libEGL.so libGLESv2.so
          libinput # libinput.so
-         libliftoff libliftoff.so
          libx11
          libxcb # libxcb-dri3.so libxcb-present.so libxcb-render.so libxcb-res.so libxcb-shm.so libxcb.so libxcb-xfixes.so libxcb-xinput.so
          libxcomposite # libxcb-composite.so
@@ -36,18 +35,16 @@ depends=(cairo # libcairo.so
          libxfixes
          libxkbcommon libxkbcommon.so
          libxrender
-         lua
+         lua # liblua.so
          mesa # libgbm.so
          muparser # libmuparser.so
          opengl-driver
          pango libpango-1.0.so libpangocairo-1.0.so
          pixman libpixman-1.so
          re2 libre2.so
-         seatd libseat.so
-         systemd-libs libsystemd.so
-         tomlplusplus libtomlplusplus.so libudev.so
+         tomlplusplus libtomlplusplus.so
          util-linux-libs libuuid.so
-         wayland libwayland-client.so libwayland-server.so
+         wayland libwayland-server.so
          wayland-protocols
          xcb-proto
          xcb-util
