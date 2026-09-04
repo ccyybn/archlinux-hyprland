@@ -62,7 +62,6 @@ makedepends=(cmake
              xorgproto)
 optdepends=('hyprpm: build and install plugins'
             'hyprshutdown: clean logout and shutdown helper'
-            'uwsm: an advanced way to start desktop compositors as systemd units'
             'xdg-desktop-portal-hyprland: xdg-desktop-portal backend for hyprland')
 provides=(wayland-compositor)
 _archive="${pkgname^}-$pkgver"

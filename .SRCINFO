@@ -77,7 +77,6 @@ pkgbase = hyprland
 	depends = xorg-xwayland
 	optdepends = hyprpm: build and install plugins
 	optdepends = hyprshutdown: clean logout and shutdown helper
-	optdepends = uwsm: an advanced way to start desktop compositors as systemd units
 	optdepends = xdg-desktop-portal-hyprland: xdg-desktop-portal backend for hyprland
 	provides = wayland-compositor
 	source = Hyprland-0.56.2.tar.gz::https://github.com/hyprwm/Hyprland/releases/download/v0.56.2/source-v0.56.2.tar.gz
