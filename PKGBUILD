@@ -8,7 +8,7 @@ pkgver=0.56.2
 pkgrel=4
 pkgdesc='a highly customizable dynamic tiling Wayland compositor'
 arch=(x86_64 aarch64)
-url="https://github.com/hyprwm/${pkgname^}"
+url="https://github.com/ccyybn/Hyprland"
 license=(BSD-3-Clause)
 depends=(cairo # libcairo.so
          aquamarine libaquamarine.so
@@ -54,6 +54,7 @@ depends=(cairo # libcairo.so
          xcb-util-wm # libxcb-ewmh.so  libxcb-icccm.so 
          xorg-xwayland)
 makedepends=(cmake
+             git
              glaze
              hyprland-protocols
              hyprwayland-scanner
@@ -64,24 +65,26 @@ optdepends=('hyprpm: build and install plugins'
             'hyprshutdown: clean logout and shutdown helper'
             'xdg-desktop-portal-hyprland: xdg-desktop-portal backend for hyprland')
 provides=(wayland-compositor)
-_archive="${pkgname^}-$pkgver"
-source=("$_archive.tar.gz::$url/releases/download/v$pkgver/source-v$pkgver.tar.gz")
-sha256sums=('03ad3f5ef152ff44116ffd56fcf808486211ecabf4f0ba567108ee746ba5cd2e')
+
+_gitname="${pkgname^}"
+
+source=("git+https://github.com/ccyybn/Hyprland.git#branch=v${pkgver}-c")
+sha256sums=('SKIP')
 
 prepare() {
-	ln -sf hyprland-source "$_archive"
-	cd "$_archive"
+	cd "$_gitname"
+	git submodule update --init --recursive
 	sed -i -e '/^release:/{n;s/-D/-DCMAKE_SKIP_RPATH=ON -D/}' Makefile
 	sed -i -e '/find_package.glaze/s/7...<8 //' {.,hyprpm,start}/CMakeLists.txt
 }
 
 build() {
-	cd "$_archive"
+	cd "$_gitname"
 	make release PREFIX=/usr
 }
 
 package_hyprland() {
-	cd "$_archive"
+	cd "$_gitname"
 	make DESTDIR="$pkgdir" install
 	rm -fv "$pkgdir/usr/include/hyprland/src/version.h.in"
 	find $pkgdir -name '*hyprpm*' -delete
@@ -97,7 +100,7 @@ package_hyprpm() {
 	         hyprland-protocols
 	         hyprwayland-scanner
 	         meson)
-	cd "$_archive"
+	cd "$_gitname"
 	make DESTDIR="$pkgdir" install
 	find $pkgdir -type f,l -not -name '*hyprpm*' -delete
 	find $pkgdir -type d -empty -delete
